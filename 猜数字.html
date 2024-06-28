@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>数字猜测游戏</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      body {
+        width: 50%; /* 设置页面宽度为50% */
+        max-width: 800px; /* 设置页面最大宽度为800px */
+        min-width: 480px; /* 设置页面最小宽度为480px */
+        margin: 0 auto; /* 设置页面居中 */
+      }
+      .form input[type="number"] {
+        width: 200px; /* 设置数字输入框宽度为200px */
+      }
+      .lastResult {
+        color: white; /* 设置文字颜色为白色 */
+        padding: 3px; /* 设置内边距为3px */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>猜数字游戏</h1>
+    <p>我们选择了一个介于1和100之间的随机数。看看你能不能在10圈以内猜到。我们会告诉你你的猜测是过高还是过低。</p>
+    <div class="form">
+      <label for="guessField">输入数字: </label>
+      <input type="number" min="1" max="100" required id="guessField" class="guessField">
+      <input type="submit" value="输入数字" class="guessSubmit">
+    </div>
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+    <script>
+      let randomNumber = Math.floor(Math.random() * 100) + 1; // 生成1到100之间的随机数
+      const guesses = document.querySelector('.guesses'); // 获取猜测次数的元素
+      const lastResult = document.querySelector('.lastResult'); // 获取最后结果的元素
+      const lowOrHi = document.querySelector('.lowOrHi'); // 获取猜测结果的元素
+      const guessSubmit = document.querySelector('.guessSubmit'); // 获取提交按钮的元素
+      const guessField = document.querySelector('.guessField'); // 获取猜测输入框的元素
+      let guessCount = 1; // 初始化猜测次数为1
+      let resetButton;
+
+      function checkGuess() {
+        const userGuess = Number(guessField.value); // 获取用户输入的猜测值
+        if (guessCount === 1) {
+          guesses.textContent = '猜测记录: '; // 如果是第一次猜测，将猜测次数提示设置为"Previous guesses: "
+        }
+        guesses.textContent += userGuess + ' '; // 将用户猜测值追加到猜测次数提示中
+        if (userGuess === randomNumber) { // 如果用户猜对了
+          lastResult.textContent = '恭喜你猜对了'; // 显示恭喜信息
+          lastResult.style.backgroundColor = 'green'; // 设置背景颜色为绿色
+          lowOrHi.textContent = ''; // 清空猜测结果提示
+          setGameOver(); // 调用游戏结束函数
+        } else if (guessCount === 10) { // 如果猜测次数达到10次
+          lastResult.textContent = '游戏结束'; // 显示游戏结束信息
+          lowOrHi.textContent = ''; // 清空猜测结果提示
+          setGameOver(); // 调用游戏结束函数
+        } else { // 如果猜错了
+          lastResult.textContent = '猜错了，继续努力'; // 显示猜错信息
+          lastResult.style.backgroundColor = 'red'; // 设置背景颜色为红色
+          if(userGuess < randomNumber) {
+            lowOrHi.textContent = '猜的太低了！' ; // 显示猜测结果偏低提示
+          } else if(userGuess > randomNumber) {
+            lowOrHi.textContent = '猜的太高了！'; // 显示猜测结果偏高提示
+          }
+        }
+        guessCount++; // 猜测次数加一
+        guessField.value = ''; // 清空猜测输入框
+        guessField.focus(); // 将焦点设置回猜测输入框
+      }
+      guessSubmit.addEventListener('click', checkGuess); // 绑定点击事件处理函数
+
+      function setGameOver() {
+        guessField.disabled = true; // 禁用猜测输入框
+        guessSubmit.disabled = true; // 禁用提交按钮
+        resetButton = document.createElement('button'); // 创建重新开始按钮
+        resetButton.textContent = '开始新游戏'; // 设置按钮文本
+        document.body.appendChild(resetButton); // 将按钮添加到页面中
+        resetButton.addEventListener('click', resetGame); // 绑定点击事件处理函数
+      }
+
+      function resetGame() {
+        guessCount = 1; // 重置猜测次数
+        const resetParas = document.querySelectorAll('.resultParas p'); // 获取结果提示元素
+        for (const resetPara of resetParas) {
+          resetPara.textContent = ''; // 清空结果提示
+        }
+        resetButton.parentNode.removeChild(resetButton); // 移除重新开始按钮
+        guessField.disabled = false; // 启用猜测输入框
+        guessSubmit.disabled = false; // 启用提交按钮
+        guessField.value = ''; // 清空猜测输入框
+        guessField.focus(); // 将焦点设置回猜测输入框
+        lastResult.style.backgroundColor = 'white'; // 设置背景颜色为白色
+        randomNumber = Math.floor(Math.random() * 100) + 1; // 生成新的随机数
+      }
+    </script>
+  </body>
+</html>
