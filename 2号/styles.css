@@ -1,0 +1,54 @@
+/* styles.css */
+
+/* 基本布局设置 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.calculator {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    width: 320px;
+}
+
+/* 显示区域样式 */
+.display {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.display input {
+    width: 100%;
+    border: none;
+    background: #333;
+    color: #fff;
+    font-size: 2em;
+    text-align: right;
+}
+
+/* 按钮网格布局 */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* 按钮样式 */
+button {
+    padding: 20px;
+    font-size: 1.2em;
+    border: 1px solid #c41414;
+    background: #a59696;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ddd;
+}

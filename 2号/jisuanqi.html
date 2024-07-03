@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能增强计算器</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 链接到CSS样式表 -->
+</head>
+<body>
+    <div class="calculator"> <!-- 计算器的容器 -->
+        <div class="display"> <!-- 显示区域 -->
+            <input type="text" id="display" disabled> <!-- 显示计算结果的输入框，用户不可编辑 -->
+        </div>
+        <div class="buttons"> <!-- 按钮区域 -->
+            <!-- 基本功能按钮 -->
+            <button onclick="clearDisplay()">C</button> <!-- 清空显示 -->
+            <button onclick="appendToDisplay('/')">/</button> <!-- 除法 -->
+            <button onclick="appendToDisplay('*')">*</button> <!-- 乘法 -->
+            <button onclick="appendToDisplay('-')">-</button> <!-- 减法 -->
+            <button onclick="appendToDisplay('+')">+</button> <!-- 加法 -->
+            <button onclick="appendToDisplay('^')">^</button> <!-- 幂运算 -->
+            <button onclick="appendToDisplay('sqrt(')">√</button> <!-- 平方根 -->
+            <button onclick="appendToDisplay('log(')">log</button> <!-- 对数 -->
+            <button onclick="appendToDisplay(')')">)</button> <!-- 右括号 -->
+            <button onclick="appendToDisplay('(')">(</button> <!-- 左括号 -->
+            <button onclick="appendToDisplay('.')">.</button> <!-- 小数点 -->
+            <button onclick="appendToDisplay('0')">0</button> <!-- 数字0 -->
+            <button onclick="appendToDisplay('1')">1</button> <!-- 数字1 -->
+            <button onclick="appendToDisplay('2')">2</button> <!-- 数字2 -->
+            <button onclick="appendToDisplay('3')">3</button> <!-- 数字3 -->
+            <button onclick="appendToDisplay('4')">4</button> <!-- 数字4 -->
+            <button onclick="appendToDisplay('5')">5</button> <!-- 数字5 -->
+            <button onclick="appendToDisplay('6')">6</button> <!-- 数字6 -->
+            <button onclick="appendToDisplay('7')">7</button> <!-- 数字7 -->
+            <button onclick="appendToDisplay('8')">8</button> <!-- 数字8 -->
+            <button onclick="appendToDisplay('9')">9</button> <!-- 数字9 -->
+            <button onclick="calculateResult()">=</button> <!-- 计算结果 -->
+            
+            <!-- 进制转换和位运算按钮 -->
+            <button onclick="convertBase('bin')">BIN</button> <!-- 转换为二进制 -->
+            <button onclick="convertBase('hex')">HEX</button> <!-- 转换为十六进制 -->
+            <button onclick="convertBase('dec')">DEC</button> <!-- 转换为十进制 -->
+            <button onclick="appendToDisplay('&')">AND</button> <!-- 按位与 -->
+            <button onclick="appendToDisplay('|')">OR</button> <!-- 按位或 -->
+            <button onclick="appendToDisplay('^')">XOR</button> <!-- 按位异或 -->
+            <button onclick="appendToDisplay('<<')"><<</button> <!-- 左移 -->
+            <button onclick="appendToDisplay('>>')">>></button> <!-- 右移 -->
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- 链接到JavaScript脚本 -->
+</body>
+</html>
