@@ -1,0 +1,56 @@
+/* styles.css */
+
+/* 设置页面的基本布局 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 高度为视口高度 */
+    margin: 0; /* 去掉默认的边距 */
+    background-color: #f0f0f0; /* 背景颜色 */
+}
+
+/* 计算器容器样式 */
+.calculator {
+    border: 1px solid #ccc; /* 边框颜色 */
+    border-radius: 5px; /* 圆角边框 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    background: #fff; /* 背景颜色 */
+}
+
+/* 显示区域样式 */
+.display {
+    background: #333; /* 背景颜色 */
+    color: #fff; /* 字体颜色 */
+    padding: 10px; /* 内边距 */
+}
+
+/* 输入框样式 */
+.display input {
+    width: 100%; /* 宽度100% */
+    border: none; /* 去掉边框 */
+    background: #333; /* 背景颜色 */
+    color: #fff; /* 字体颜色 */
+    font-size: 2em; /* 字体大小 */
+    text-align: right; /* 文字右对齐 */
+}
+
+/* 按钮网格布局 */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 四列均分 */
+}
+
+/* 按钮样式 */
+button {
+    padding: 20px; /* 内边距 */
+    font-size: 1.5em; /* 字体大小 */
+    border: 1px solid #ccc; /* 边框颜色 */
+    background: #eee; /* 背景颜色 */
+    cursor: pointer; /* 鼠标样式 */
+}
+
+/* 鼠标悬停时按钮的背景颜色 */
+button:hover {
+    background: #ddd;
+}
